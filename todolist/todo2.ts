@@ -16,12 +16,12 @@ window.onload = function () {
 };
 const showeachtask = (todolist: Array<string>) => {
   var output = "";
-  for (let i in todolist) {
+  for (let item in todolist) {
     output =
       output +
-      todolist[i] +
+      todolist[item] +
       '<button id="' +
-      i +
+      item +
       '" onclick="deletetask(this)">remove</button>' +
       "<br>" +
       "<hr>";
