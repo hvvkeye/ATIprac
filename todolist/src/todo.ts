@@ -14,6 +14,17 @@ window.onload = function () {
   };
   showeachtask(todolist);
 };
+const deletetask = (button: any) => {
+  let todolist: Array<string> = JSON.parse(
+    localStorage.getItem("todolist") || ""
+  );
+  delete todolist[button.id];
+  localStorage.setItem(
+    "todolist",
+    JSON.stringify(todolist.filter((task) => task !== null))
+  );
+  location.reload();
+};
 const showeachtask = (todolist: Array<string>) => {
   var output = "";
   for (let item in todolist) {
@@ -27,21 +38,10 @@ const showeachtask = (todolist: Array<string>) => {
       "<hr>";
   }
   document.getElementById("out")!.innerHTML = output;
-};
-const deletetask = (button: any) => {
-  let todolist: Array<string> = JSON.parse(
-    localStorage.getItem("todolist") || ""
-  );
-  delete todolist[button.id];
-  localStorage.setItem(
-    "todolist",
-    JSON.stringify(todolist.filter((task) => task !== null))
-  );
-  location.reload();
-};
+}
 const checklocal = function (key: string): Array<string> {
   if (localStorage.getItem(key) !== null) {
     return JSON.parse(localStorage.getItem(key) || "");
   }
   return new Array<string>();
-};
+}
