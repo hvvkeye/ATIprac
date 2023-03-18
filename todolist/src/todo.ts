@@ -1,4 +1,5 @@
 window.onload = function () {
+
   let todolist: Array<string> = [];
   todolist = checklocal("todolist");
   document.getElementById("clear")!.onclick = function () {
