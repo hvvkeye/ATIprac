@@ -23,6 +23,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template:'../todolist/index.html',
       inject:'body'
+      
     })  
   ]
 }
