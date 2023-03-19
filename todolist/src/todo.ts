@@ -1,5 +1,6 @@
-window.onload = function () {
 
+
+window.onload = function () {
   let todolist: Array<string> = [];
   todolist = checklocal("todolist");
   document.getElementById("clear")!.onclick = function () {
@@ -15,18 +16,20 @@ window.onload = function () {
   };
   showeachtask(todolist);
 };
-const deletetask = (button: any) => {
-  let todolist: Array<string> = JSON.parse(
-    localStorage.getItem("todolist") || ""
-  );
-  delete todolist[button.id];
-  localStorage.setItem(
-    "todolist",
-    JSON.stringify(todolist.filter((task) => task !== null))
-  );
-  location.reload();
-};
+
 const showeachtask = (todolist: Array<string>) => {
+  const deletetask = (button: any) => {
+    let todolist: Array<string> = JSON.parse(
+      localStorage.getItem("todolist") || ""
+    );
+    delete todolist[button.id];
+    localStorage.setItem(
+      "todolist",
+      JSON.stringify(todolist.filter((task) => task !== null))
+    );
+    location.reload();
+  };
+  let name:string = deletetask.name
   var output = "";
   for (let item in todolist) {
     output =
@@ -34,7 +37,7 @@ const showeachtask = (todolist: Array<string>) => {
       todolist[item] +
       '<button id="' +
       item +
-      '" onclick="deletetask(this)">remove</button>' +
+      '"onclick="' + name  + '(this)"">remove</button>' +
       "<br>" +
       "<hr>";
   }

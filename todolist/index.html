@@ -11,5 +11,13 @@
     <button id="add">Add</button>
     <button id="clear">Clear the list</button>
     <div id="out"></div>
-  <script defer src="webpack-output.js"></script>
+<script>
+ const deletetask = (button) => {
+  let todolist = JSON.parse(localStorage.getItem("todolist") || "");
+  delete todolist[button.id];
+  localStorage.setItem("todolist",JSON.stringify(todolist.filter((task) => task !== null)));
+  location.reload();
+};
+</script>
+</body>
 </html>
